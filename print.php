@@ -7,7 +7,7 @@
     $kategori = isset($_GET['keyword']) ? $_GET['keyword'] : '';
 
     //ambil data barang
-    $result = getBarang($keyword, $kategori_filter);
+    $result = getBarang($keyword, $kategori);
 
     // ambil semua kategori untuk dropdown
     $kategori_list = getKategori();
