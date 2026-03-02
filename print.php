@@ -1,11 +1,14 @@
 <?php
     include 'config.php';
     include 'fungsi.php';
+
     // ambil parameter pencarian
     $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
     $kategori = isset($_GET['keyword']) ? $_GET['keyword'] : '';
+
     //ambil data barang
     $result = getBarang($keyword, $kategori_filter);
+
     // ambil semua kategori untuk dropdown
     $kategori_list = getKategori();
 ?>
@@ -90,6 +93,11 @@
         <p><strong>Total Data: </strong> 20 barang </p>
     </div>
     <table>
+        <?php
+        $no = 1;
+        $total_harga = 0;
+        $total_stok = 0;
+        ?>
         <thead>
             <th>Id</th>
             <th>Nama Barang</th>
@@ -100,6 +108,11 @@
             <th>Tanggal Input</th>
         </thead>
         <tbody>
+            <?php
+            while(mysqli_fetch_assoc($result)){
+
+            
+            ?>
             <tr>
                 <td>1</td>
                 <td>Kursi Gemink</td>
@@ -109,6 +122,7 @@
                 <td>Kursi Untuk Main Game</td>
                 <td></td>
             </tr>
+            <?php } ?>
             <tr>
                 <td></td>
             </tr>
