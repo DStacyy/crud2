@@ -38,7 +38,24 @@
                 <td>Kursi Untuk Main Game</td>
                 <td></td>
             </tr>
+            <tr>
+                <td></td>
+            </tr>
         </tbody>
     </table>
+
+    <div style="margin-top:20px;">
+        <p><strong>Ringkasan:</strong></p>
+        <p>Total Data: 100 Barang</p>
+        <p>Total Nilai Barang: Rp1.500.000</p>
+        <p>Rata-rata Harga: Rp450.000</p>
+    </div>
+    <script>
+        window.onload = function(){
+            if(window.location.search.indexOf('auto-print')!== -1){
+                window.print();
+            }
+        }
+    </script>
 </body>
 </html>
