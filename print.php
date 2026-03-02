@@ -17,6 +17,50 @@
             text-align: center:
             margin-bottom: 20px;
         }
+        .header h1{
+            margin-bottom: 5px;
+        }
+        .info{
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f5f5f5;
+        }
+        table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+    table, th, td {
+    border: 1px solid #333;
+    }
+    th, td {
+    padding: 8px;
+    text-align: left;
+    }
+    th {
+    background-color: #f2f2f2;
+    }
+    .total {
+
+    font-weight: bold;
+    background-color: #e8f4ff;
+    }   
+    /* .no-print {
+    display: none;
+    } */
+    @media print {
+    .no-print {
+    display: none !important;
+    }
+    body {
+    padding: 0;
+    margin: 0;
+    }
+    @page {
+    size: portrait;
+    margin: 1cm;
+    }
+    }
     </style>
 </head>
 
