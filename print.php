@@ -4,7 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cetak Data Barang</title>
+    <style>
+        *{
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            padding: 20px;
+        }
+        .header{
+            text-align: center:
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
+
 <body>
     <div class="no-print" style="margin-bottom: 20px; text-align: center;">
         <button onclick="window.print();">Cetak Halaman</button>
