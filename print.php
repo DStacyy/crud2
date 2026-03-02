@@ -1,3 +1,15 @@
+<?php
+    include 'config.php';
+    include 'fungsi.php';
+    // ambil parameter pencarian
+    $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
+    $kategori = isset($_GET['keyword']) ? $_GET['keyword'] : '';
+    //ambil data barang
+    $result = getBarang($keyword, $kategori_filter);
+    // ambil semua kategori untuk dropdown
+    $kategori_list = getKategori();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,9 +57,9 @@
         font-weight: bold;
         background-color: #e8f4ff;
         }   
-        .no-print {
+        /* .no-print {
         display: none;
-        }
+        } */
         @media print {
         .no-print {
         display: none !important;
