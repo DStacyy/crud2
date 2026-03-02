@@ -14,7 +14,7 @@
             padding: 20px;
         }
         .header{
-            text-align: center:
+            text-align: center;
             margin-bottom: 20px;
         }
         .header h1{
@@ -29,38 +29,38 @@
         width: 100%;
         border-collapse: collapse;
         margin-top: 10px;
-    }
-    table, th, td {
-    border: 1px solid #333;
-    }
-    th, td {
-    padding: 8px;
-    text-align: left;
-    }
-    th {
-    background-color: #f2f2f2;
-    }
-    .total {
+        }
+        table, th, td {
+        border: 1px solid #333;
+        }
+        th, td {
+        padding: 8px;
+        text-align: left;
+        }
+        th {
+        background-color: #f2f2f2;
+        }
+        .total {
 
-    font-weight: bold;
-    background-color: #e8f4ff;
-    }   
-    /* .no-print {
-    display: none;
-    } */
-    @media print {
-    .no-print {
-    display: none !important;
-    }
-    body {
-    padding: 0;
-    margin: 0;
-    }
-    @page {
-    size: portrait;
-    margin: 1cm;
-    }
-    }
+        font-weight: bold;
+        background-color: #e8f4ff;
+        }   
+        .no-print {
+        display: none;
+        }
+        @media print {
+        .no-print {
+        display: none !important;
+        }
+        body {
+        padding: 0;
+        margin: 0;
+        }
+        @page {
+        size: portrait;
+        margin: 1cm;
+        }
+        }
     </style>
 </head>
 
