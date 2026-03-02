@@ -4,10 +4,10 @@
 
     // ambil parameter pencarian
     $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
-    $kategori = isset($_GET['keyword']) ? $_GET['keyword'] : '';
+    $kategori_filter = isset($_GET['kategori']) ? $_GET['kategori'] : '';
 
     //ambil data barang
-    $result = getBarang($keyword, $kategori);
+    $result = getBarang($keyword, $kategori_filter);
 
     // ambil semua kategori untuk dropdown
     $kategori_list = getKategori();
@@ -89,8 +89,15 @@
         <P>Tanggal Cetak <?= date('d/m/y H:i:s') ?></P>
     </div>
     <div class="info">
-        <p><strong>Filter: </strong> Kategori: Elektronik</p>
-        <p><strong>Total Data: </strong> 20 barang </p>
+        <p><strong>Filter:</strong>
+            <?php
+            if (!empty($keyword))
+                echo ' Kata kunci: "' . htmlspecialchars($keyword) . '"';
+            if (!empty($kategori_filter) && $kategori_filter != 'semua')
+                echo ' Kategori: ' . htmlspecialchars($kategori_filter);
+            ?>
+        </p>
+        <p><strong>Total Data:</strong> <?php echo mysqli_num_rows($result); ?> barang</p>
     </div>
     <table>
         <?php
@@ -109,36 +116,62 @@
         </thead>
         <tbody>
             <?php
-            while(mysqli_fetch_assoc($result)){
+            $no = 1;
+            $total_harga = 0;
+            $total_stok = 0;
 
-            
-            ?>
-            <tr>
-                <td>1</td>
-                <td>Kursi Gemink</td>
-                <td>Furniture</td>
-                <td>1800000</td>
-                <td>15</td>
-                <td>Kursi Untuk Main Game</td>
-                <td></td>
-            </tr>
-            <?php } ?>
-            <tr>
-                <td></td>
+            while ($row = mysqli_fetch_assoc($result)):
+                $total_harga += $row['harga'] * $row['stok'];
+                $total_stok += $row['stok'];
+                ?>
+                <tr>
+                    <td><?php echo $no++; ?></td>
+                    <td><?php echo htmlspecialchars($row['nama_barang']); ?></td>
+                    <td><?php echo htmlspecialchars($row['kategori']); ?></td>
+                    <td>Rp <?php echo number_format($row['harga'], 0, ',', '.'); ?></td>
+                    <td><?php echo $row['stok']; ?></td>
+                    <td><?php echo htmlspecialchars($row['deskripsi']); ?></td>
+                    <td><?php echo date('d/m/Y', strtotime($row['created_at'])); ?></td>
+                </tr>
+            <?php endwhile; ?>
+
+            <!-- Total -->
+            <tr class="total">
+                <td colspan="3">TOTAL</td>
+                <td>Rp <?php echo number_format($total_harga, 0, ',', '.'); ?></td>
+                <td><?php echo $total_stok; ?></td>
+                <td colspan="2"></td>
             </tr>
         </tbody>
     </table>
 
-    <div style="margin-top:20px;">
+    <div style="margin-top: 20px;">
         <p><strong>Ringkasan:</strong></p>
-        <p>Total Data: 100 Barang</p>
-        <p>Total Nilai Barang: Rp1.500.000</p>
-        <p>Rata-rata Harga: Rp450.000</p>
+        <p>Total Data: <?php echo ($no - 1); ?> barang</p>
+        <p>Total Nilai Barang: Rp <?php echo number_format($total_harga, 0, ',', '.'); ?></p>
+        <p>Rata-rata Harga: Rp <?php echo number_format(($no > 1) ? $total_harga / ($no - 1) : 0, 0, ',', '.'); ?></p>
     </div>
+
     <script>
-        window.onload = function(){
-            if(window.location.search.indexOf('auto-print')!== -1){
+        window.onload = function () {
+
+            // Auto print
+            if (window.location.search.indexOf('auto_print') !== -1) {
                 window.print();
+            }
+
+            // Auto close
+            if (window.location.search.indexOf('auto_close') !== 0) {
+                window.close();
+            }
+        };
+
+        // Fungsi tombol tutup
+        function tutupHalaman() {
+            if (window.opener) {
+                window.close(); // jika dibuka popup
+            } else {
+                window.location.href = "index.php"; // jika bukan popup
             }
         }
     </script>
