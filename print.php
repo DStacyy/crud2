@@ -198,10 +198,15 @@
     <div class="info">
         <p><strong>Filter:</strong>
             <?php
-            if (!empty($keyword))
+            if (!empty($keyword)) {
                 echo ' Kata kunci: "' . htmlspecialchars($keyword) . '"';
-            if (!empty($kategori_filter) && $kategori_filter != 'semua')
+            }
+
+            if (empty($kategori_filter) || $kategori_filter == 'semua') {
+                echo ' Kategori: Semua Kategori';
+            } else {
                 echo ' Kategori: ' . htmlspecialchars($kategori_filter);
+            }
             ?>
         </p>
         <p><strong>Total Data:</strong> <?php echo mysqli_num_rows($result); ?> barang</p>

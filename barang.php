@@ -87,7 +87,7 @@ $message = getMessage();
                 <div class="card-header">
                     <h3 class="card-title">Daftar Barang</h3>
                     <div class="card-tools">
-                        <a href="print.php" class="btn btn-success btn-sm mr-2">
+                        <a href="print.php?keyword=<?= $keyword; ?>&kategori=<?= $kategori_filter; ?>" class="btn btn-success btn-sm mr-2">
                             <i class="fas fa-print"></i> Cetak Barang
                         </a>
                         <a href="tambah.php" class="btn btn-primary btn-sm">
@@ -96,7 +96,7 @@ $message = getMessage();
                     </div>
                 </div>
                 
-<div class="card-body">
+            <div class="card-body">
                     <?php if (mysqli_num_rows($result) > 0): ?>
                         <div class="alert alert-info">
                             Ditemukan <?php echo mysqli_num_rows($result); ?> data barang
