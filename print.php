@@ -227,7 +227,7 @@
             $total_harga = 0;
             $total_stok = 0;
 
-            while ($row = mysqli_fetch_assoc($result)):
+            while ($row = mysqli_fetch_assoc($result)){
                 $total_harga += $row['harga'] * $row['stok'];
                 $total_stok += $row['stok'];
                 ?>
@@ -240,7 +240,7 @@
                     <td><?php echo htmlspecialchars($row['deskripsi']); ?></td>
                     <td><?php echo date('d/m/Y', strtotime($row['created_at'])); ?></td>
                 </tr>
-            <?php endwhile; ?>
+            <?php } ?>
 
             <!-- Total -->
             <tr class="total">
