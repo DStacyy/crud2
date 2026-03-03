@@ -189,7 +189,7 @@
 <body>
     <div class="no-print" style="margin-bottom: 20px; text-align: center;">
         <button onclick="window.print();">Cetak Halaman</button>
-        <button onclick="window.close();">Tutup</button>
+        <button onclick="tutupHalaman();">Tutup</button>
         </div>
     <div class="header">
         <h1>LAPORAN DATA BARANG</h1>
@@ -275,12 +275,15 @@
 
         // Fungsi tombol tutup
         function tutupHalaman() {
-            if (window.opener) {
-                window.close(); // jika dibuka popup
-            } else {
-                window.location.href = "barang.php"; // jika bukan popup
-            }
-        }
+        // Coba tutup jendela (berhasil jika dibuka via window.open)
+        window.close();
+
+        // Jika gagal menutup (misal dibuka di tab baru/bukan popup), 
+        // arahkan kembali ke halaman barang.php (sesuaikan nama file Anda)
+        setTimeout(function() {
+            window.location.href = "barang.php"; 
+        }, 200); // delay 0.5 detik
+    }
     </script>
 </body>
 </html>
