@@ -278,7 +278,7 @@
             if (window.opener) {
                 window.close(); // jika dibuka popup
             } else {
-                window.location.href = "index.php"; // jika bukan popup
+                window.location.href = "barang.php"; // jika bukan popup
             }
         }
     </script>
