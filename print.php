@@ -256,7 +256,7 @@
         <p><strong>Ringkasan:</strong></p>
         <p>Total Data: <?php echo ($no - 1); ?> barang</p>
         <p>Total Nilai Barang: Rp <?php echo number_format($total_harga, 0, ',', '.'); ?></p>
-        <p>Rata-rata Harga: Rp <?php echo number_format(($no > 1) ? $total_harga / $total_sto : 0, 0, ',', '.'); ?></p>
+        <p>Rata-rata Harga: Rp <?php echo number_format(($no > 1) ? $total_harga / $total_stok : 0, 0, ',', '.'); ?></p>
     </div>
 
     <script>
